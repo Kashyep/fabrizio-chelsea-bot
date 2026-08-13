@@ -1,0 +1,12 @@
+services:
+  bot:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: ["daemon", "--live", "--interval", "300"]
+    volumes:
+      - chelsea_bot_state:/app/data
+
+volumes:
+  chelsea_bot_state:
