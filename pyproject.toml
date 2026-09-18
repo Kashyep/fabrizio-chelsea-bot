@@ -23,7 +23,7 @@ dev = [
   "ruff>=0.11,<1",
 ]
 pdf = [
-  "reportlab>=4.2,<5",
+  "reportlab>=4.2,<6",
   "pypdf>=5,<7",
 ]
 
