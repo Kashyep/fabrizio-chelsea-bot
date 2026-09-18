@@ -1,0 +1,22 @@
+services:
+  bot:
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "256M"
+        reservations:
+          cpus: "0.1"
+          memory: "64M"
+    healthcheck:
+      test: ["CMD", "chelsea-bot", "status"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s

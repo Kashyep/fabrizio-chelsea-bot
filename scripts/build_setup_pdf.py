@@ -361,9 +361,7 @@ def _parse_markdown(source: str) -> list:
             return
         text = " ".join(part.strip() for part in paragraph_buffer)
         style = (
-            STYLES["callout"]
-            if text.startswith(("Critical:", "Important:"))
-            else STYLES["body"]
+            STYLES["callout"] if text.startswith(("Critical:", "Important:")) else STYLES["body"]
         )
         story.append(Paragraph(_inline(text), style))
         paragraph_buffer.clear()

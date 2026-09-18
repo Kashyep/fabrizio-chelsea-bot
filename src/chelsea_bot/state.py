@@ -51,9 +51,7 @@ class StateStore:
 
     def get(self, key: str) -> str | None:
         with self._connect() as connection:
-            row = connection.execute(
-                "SELECT value FROM metadata WHERE key = ?", (key,)
-            ).fetchone()
+            row = connection.execute("SELECT value FROM metadata WHERE key = ?", (key,)).fetchone()
         return str(row["value"]) if row else None
 
     def set(self, key: str, value: str) -> None:

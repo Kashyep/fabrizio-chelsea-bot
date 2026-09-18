@@ -1,0 +1,27 @@
+[Unit]
+Description=Fabrizio Chelsea Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=bot
+Group=bot
+WorkingDirectory=/opt/chelsea-bot
+EnvironmentFile=/opt/chelsea-bot/.env
+ExecStart=/opt/chelsea-bot/.venv/bin/chelsea-bot daemon --live --interval 300
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=chelsea-bot
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/chelsea-bot/data
+
+[Install]
+WantedBy=multi-user.target
